@@ -38,3 +38,14 @@ python manage.py runserver        # http://localhost:8000
 ## Tech
 
 Python · Django 3.0 · django-crispy-forms · Bootstrap · SQLite
+
+## Configuration
+
+Secrets are read from **environment variables**, so nothing sensitive lives in the code. Copy [`.env.example`](.env.example) to `.env` (it is git-ignored) or export the variables in your shell:
+
+| Variable | Purpose |
+|---|---|
+| `DJANGO_SECRET_KEY` | Django `SECRET_KEY`. If unset, a random key is generated at startup (fine for local dev). |
+| `EMAIL_HOST_PASSWORD` | SMTP password for Django email |
+
+The same values are stored as **GitHub Actions secrets** on this repo (*Settings → Secrets and variables → Actions*), so CI/CD workflows can use them as `${{ secrets.NAME }}`.
